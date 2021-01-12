@@ -6,7 +6,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       display: false,
-      url: 'http:/localhost:3001/',
+      url: '',
       method: ''
     }
   }
@@ -14,8 +14,8 @@ class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let newSubmit = e.target.url.value;
-    this.setState({ url: newSubmit });
+    let url = e.target.url.value;
+    this.setState({ url });
 
     if(this.state.method){ this.setState({ display: true })}
   }
@@ -32,16 +32,17 @@ class Form extends React.Component {
       <div id="form">
       <form onSubmit={this.handleSubmit}>
         <label for="url">URL:</label>
-        <input type='text' name="url" onChange={this.handleInput}/>
-        <button type='submit' onClick={this.handleClick}>GO!</button>
+        <input type='text' name="url" />
+        <button type='submit'>GO!</button>
       </form>
-        <div class="buttons" onClick={this.handleClic}>
+        <div class="buttons" onClick={this.handleClick}>
         <legend>Select a Method</legend>
           <button name="get" >GET</button>
           <button name="post" >POST</button>
           <button name="put" >PUT</button>
           <button name="delete" >DELETE</button>
         </div> 
+        
         {!this.state.display ? "" :
         <div id="results">
           <legend>Results</legend>
