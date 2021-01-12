@@ -1,0 +1,12 @@
+$myColor: black;
+$textColor: green;
+
+h1 {
+  background-color: $myColor;
+  height: 15vh;
+  color: $textColor;
+  font-size: 8vh;
+  text-align: center;
+  padding-top: 5vh;
+  margin-top: 0vh;
+}

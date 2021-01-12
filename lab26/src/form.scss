@@ -1,0 +1,36 @@
+form {
+  label {
+    font-style: bold;
+    font-size: 2.75 vh;
+    font-weight: 600;
+  }
+  button {
+    background-color: green;
+    color: rgb(255, 255, 212);
+  }
+  button:hover{
+    background-color: rgb(84, 210, 84);
+    color: rgb(255, 255, 212);
+  }
+  .restButtons {
+    display: flex;
+    margin-top: 2vh;
+    border: solid black;
+    legend {
+      height: 5vh;
+      text-align: center;
+      font-weight: 700;
+      font-size: 3vh;
+    }
+  }
+}
+
+#results {
+  background-color: rgb(179, 179, 179);
+  border: solid black;
+  legend {
+    font-weight: 700;
+    font-size: 3vh;
+    height: 6vh;
+  }
+}
