@@ -10,17 +10,38 @@ class Form extends React.Component {
       method: ''
     }
   }
-
-
+  
+  
   handleSubmit = e => {
     e.preventDefault();
     let url = e.target.url.value;
     this.setState({ url });
-
+    
     if(this.state.method){ this.setState({ display: true })}
   }
   
+  getPokemon = async (e) => {
+    const url = this.state.url;
+    console.log(this.state.method);
+    const pokemon = await fetch(url, {method: this.state.method, mode: 'cors'})
+    
+    .then(res => {
+      for( var pair of res.headers.entries()) {
+        console.log(pair[0]+ ': '+ pair[1]);
+        if (pair[0] === 'x-total-count') {
+          this.setState({
+            total: pair[1]
+          })
+        }
+      }
+      if(res.status !==200)return;
+      return res.json();
+    })
+    this.props.givePokemon(pokemon.results, pokemon.count);
+  }
+  
   handleClick = e => {
+    console.log(e);
     let method = e.target.name;
     this.setState({ method });
 
@@ -33,23 +54,15 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label for="url">URL:</label>
         <input type='text' name="url" />
-        <button type='submit'>GO!</button>
+        <button type='submit' onClick={this.getPokemon}>GO!</button>
       </form>
-        <div class="buttons" onClick={this.handleClick}>
+        <div class="buttons">
         <legend>Select a Method</legend>
-          <button name="get" >GET</button>
-          <button name="post" >POST</button>
-          <button name="put" >PUT</button>
-          <button name="delete" >DELETE</button>
-        </div> 
-        
-        {!this.state.display ? "" :
-        <div id="results">
-          <legend>Results</legend>
-          <p>URL:{ this.state.url }</p>
-          <p>METHOD:{ this.state.method }</p>
+          <button name="get" onClick={this.handleClick}>GET</button>
+          <button name="post" onClick={this.handleClick}>POST</button>
+          <button name="put" onClick={this.handleClick}>PUT</button>
+          <button name="delete" onClick={this.handleClick}>DELETE</button>
         </div>
-        }
       </div>
     )
   };
