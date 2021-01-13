@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Form from '../form/form';
-import Results from '../results/results'
 import '../app/app.scss';
 
 class App extends React.Component {
@@ -25,10 +24,6 @@ class App extends React.Component {
           <Header />
           <Form
             givePokemon={this.getPokemon} 
-          />
-          <Results 
-            pokemon={this.state.pokemon}
-            count={this.state.count}
           />
           <Footer />
         </div>

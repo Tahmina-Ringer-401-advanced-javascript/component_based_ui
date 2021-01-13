@@ -2,14 +2,14 @@ import React from 'react';
 import ReactJson from 'react-json-view';
 
 class Results extends React.Component {
-  
+
   render(){
     return(
       <div id="results">
-        <h3>Pokemon API Results</h3>
-        <p>COUNT: { this.props.count}</p>
-        <ReactJson src={this.props.pokemon} />
-        <ReactJson src={this.props.headers} />
+        <h3>Results</h3>
+        <span>{this.props.method}</span> <span>{this.props.url}</span>
+        <ReactJson src={this.props.headers} name="Headers" />
+        <ReactJson src={this.props.result} name="Response" />
       </div>
     )
   }
