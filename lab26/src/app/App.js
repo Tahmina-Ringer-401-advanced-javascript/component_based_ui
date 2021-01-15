@@ -3,6 +3,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Form from '../form/form';
 import '../app/app.scss';
+import { BrowserRouter, MemoryRouter, HashRouter} from 'react-router-dom'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -21,13 +23,13 @@ updateHistory(newHistoryObj) {
   render() {
     // console.log("this.state.history", this.state.history)
     return(
-      <div id="app">
+      <BrowserRouter>
         <Header />
         <Form 
         updateHistory = {this.updateHistory}
         />
         <Footer />
-      </div>
+      </BrowserRouter>
     )
   };
 };
