@@ -7,29 +7,29 @@ import '../app/app.scss';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      count: 0,
-      pokemon: []
+    this.state = {
+      history: []
     }
   }
 
-    getPokemon = (pokemon, count) => {
-      this.setState({ pokemon });
-      this.setState({ count });
-    }
+updateHistory(newHistoryObj) {
+  console.log("this.state.history___________", this.state.history);
+  const history = [...this.state.history, newHistoryObj];
+  this.setState({history});
+}
 
-    render() {
-      return(
-        <div id="app">
-          <Header />
-          <Form
-            givePokemon={this.getPokemon} 
-          />
-          <Footer />
-        </div>
-      )
-    };
- 
+  render() {
+    // console.log("this.state.history", this.state.history)
+    return(
+      <div id="app">
+        <Header />
+        <Form 
+        updateHistory = {this.updateHistory}
+        />
+        <Footer />
+      </div>
+    )
+  };
 };
 
 export default App;
