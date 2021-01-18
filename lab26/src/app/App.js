@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter, MemoryRouter, HashRouter} from 'react-router-dom'
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Form from '../form/form';
 import '../app/app.scss';
-import { BrowserRouter, MemoryRouter, HashRouter} from 'react-router-dom'
 
 
 class App extends React.Component {
